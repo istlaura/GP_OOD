@@ -1,4 +1,4 @@
-data class Destination(
+data class `Destination`(
     var name: String,
     var singlePrice: Double,
     var returnPrice: Double,
@@ -11,8 +11,10 @@ data class Destination(
     }
 
     fun applyPriceFactor(factor: Double) {
-        singlePrice = (singlePrice * factor)
-        returnPrice = (returnPrice * factor)
+        singlePrice = (singlePrice * factor).roundMoney()
+        returnPrice = (returnPrice * factor).roundMoney()
     }
 }
+
+fun Double.roundMoney(): Double = String.format("%.2f", this).toDouble()
 
