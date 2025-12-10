@@ -3,7 +3,7 @@ class TicketMachine(
     val soldTickets: MutableList<Ticket> = mutableListOf(),
     var ticketCounter: Int = 0
     ) {
-    private val destinations = mutableListOf(
+    val destinations = mutableListOf(
         Destination("London", 45.0, 60.0),
         Destination("Cardiff", 15.0, 25.0),
         Destination("Weston Super Mare", 20.0, 35.0),
@@ -39,7 +39,7 @@ class TicketMachine(
         println("\nAvailable destinations:")
         destinations.forEach { println("- ${it.name}") }
 
-        print("Enter destination: ")
+        println("Enter destination: ")
         val destinationName = readLine()?.trim()?.capitalize()
 
         val destination = destinations.find { it.name.equals(destinationName, ignoreCase = true) }
