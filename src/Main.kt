@@ -3,13 +3,15 @@ fun main() {
     // Hard-coded origin + destinations
     val origin = Destination(name = "Central", singlePrice = 0.0, returnPrice = 0.0) // origin's prices unused
     val machine = TicketMachine(
-        origin = origin,
+        originStation = origin,
         destinations = mutableListOf(
             Destination("Northville", 3.50, 6.00),
             Destination("Eastford", 4.20, 7.60),
             Destination("Southgate", 5.00, 9.00)
         )
     )
+
+    machine.start()
 
     val admin = Admin(id = 1, email = "admin@example.com", fullName = "Admin User")
 
@@ -106,7 +108,5 @@ fun readOptionalDouble(prompt: String): Double? {
         if (it == null) println("Invalid number, keeping old value.")
     }
 }
-    val machine =TicketMachine("Bristol Temple Meads")
-    machine.start()
-}
+
 
