@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/OOD-Group-project.iml" filepath="$PROJECT_DIR$/.idea/OOD-Group-project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GP_OOD.iml" filepath="$PROJECT_DIR$/GP_OOD.iml" />
     </modules>
   </component>
 </project>
