@@ -8,6 +8,11 @@ class Admin(
     private val specialOffers: MutableList<SpecialOffer> = mutableListOf()
     private var nextOfferId = 1
 
+    //Login method
+    fun login(inputEmail: String, inputPassword: String): Boolean {
+        return this.email == inputEmail && this.password == inputPassword
+    }
+
     // Add a special offer for a particular station
     fun addSpecialOffer(
         destinationName: String,
