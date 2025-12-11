@@ -4,5 +4,5 @@ open class User(
     val fullName: String,
     val password: String,
     var balance: Double = 0.0,
-    val tickets: MutableList<Ticket> = mutableListOf()
+    val tickets: MutableList<Ticket> = mutableListOf()){
 }
