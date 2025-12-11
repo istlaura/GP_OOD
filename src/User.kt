@@ -3,6 +3,7 @@ open class User(
     val email: String,
     val fullName: String,
     val password: String,
-    var balance: Double = 0.0,
+    var balance: Double = 0.0)
+{
     val tickets: MutableList<Ticket> = mutableListOf()
 }
