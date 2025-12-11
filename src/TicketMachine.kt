@@ -142,6 +142,10 @@ class TicketMachine(
                 2) Add a special offer
                 3) Search special offers
                 4) Delete a special offer
+                5) View all destinations
+                6) Add a destination
+                7) Modify a destination
+                8) Change ALL ticket prices by factor
                 0) Back to main menu
                 ----------------------
                 """.trimIndent()
@@ -149,6 +153,7 @@ class TicketMachine(
             print("Choose option: ")
 
             when (readLine()?.trim()) {
+                // ----- SPECIAL OFFERS (Member C) -----
                 "1" -> admin.viewAllSpecialOffers()
 
                 "2" -> {
@@ -183,6 +188,50 @@ class TicketMachine(
                     admin.deleteSpecialOffer(offerId)
                 }
 
+                // ----- DESTINATION MANAGEMENT (Member B) -----
+                "5" -> {
+                    admin.viewDestinations(this)
+                }
+
+                "6" -> {
+                    print("Enter destination name: ")
+                    val name = readLine()?.trim().orEmpty()
+
+                    val single = readDouble("Enter SINGLE price (e.g. 3.50): ")
+                    val ret = readDouble("Enter RETURN price (e.g. 6.00): ")
+
+                    admin.addDestination(
+                        this,
+                        Destination(
+                            name = name,
+                            singlePrice = single.roundMoney(),
+                            returnPrice = ret.roundMoney()
+                        )
+                    )
+                }
+
+                "7" -> {
+                    admin.viewDestinations(this)
+                    if (destinations.isEmpty()) continue
+
+                    val idx = readInt("Enter destination number to modify (shown in the list): ") - 1
+
+                    println("Leave a field blank to keep the current value.")
+                    print("New name: ")
+                    val input = readLine()
+                    val newName = if (input.isNullOrBlank()) null else input.trim()
+
+                    val newSingle = readOptionalDouble("New SINGLE price: ")
+                    val newReturn = readOptionalDouble("New RETURN price: ")
+
+                    admin.modifyDestination(this, idx, newName, newSingle, newReturn)
+                }
+
+                "8" -> {
+                    val factor = readDouble("Enter factor (e.g. 1.10 = +10%, 0.90 = -10%): ")
+                    admin.changeAllTicketPrices(this, factor)
+                }
+
                 "0" -> {
                     println("Logging out...\n")
                     return
@@ -192,4 +241,5 @@ class TicketMachine(
             }
         }
     }
+
 }
