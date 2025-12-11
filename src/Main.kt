@@ -13,7 +13,6 @@ fun main() {
 
     machine.start()
 
-    val admin = Admin(id = 1, email = "admin@example.com", fullName = "Admin User")
     val admin = Admin(id = 1, email = "admin@example.com", fullName = "Admin User",password="1234")
 
     while (true) {
